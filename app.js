@@ -9,6 +9,7 @@ let trello = new Trello(process.env.KEY, process.env.TOKEN);
 
 let boardTitle = "New Board Created Using TrelloJS";
 let listTitle = "New List Created Using TrelloJS";
+let cardTitle = `New Card Created at ${new Date()}`;
 
 trello.addBoard(boardTitle, process.env.TOKEN, function (error, trelloCard) {
     if (error) {
@@ -25,5 +26,14 @@ trello.addListToBoard("6279ad9710f679178518bbae", listTitle, function (error, tr
     }
     else {
         console.log('Added list:', trelloList);
+    }
+});
+
+trello.addCard(cardTitle, "New Card Created using TrelloJS", "6279b687f3fd874a62a28806", function (error, trelloCard) {
+    if (error) {
+        console.log('Could not add card:', error);
+    }
+    else {
+        console.log('Added card:', trelloCard);
     }
 });
